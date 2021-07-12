@@ -23,30 +23,31 @@ class VendingMachine:
             print(drink.info())
 
     def add_drink(self, drink):
-        """1種類の飲み物を登録"""
+        """飲み物の登録"""
         self.drink_list.append(drink)
 
-    def select_drink(self, kth):
+    def select_drink(self, num):
         """kth番目の飲み物の情報を返す"""
-        return self.drink_list[kth].info()
+        return self.drink_list[num].info()
     
-    def show_selected_drink(self, kth):
-        drink = self.drink_list[kth]
+    def show_selected_drink(self, num):
+        drink = self.drink_list[num]
         if drink.stock > 0:
             print(f'{drink.name}を選択しました。{drink.price}円になります')
         else:
             print(f'{drink.name}は売り切れています。申し訳ありません')
             
     def gacha(self):
-        return random.randint(1,5) == 1
+        return random.randint(1,5) == 1 #1/5で当たり
     
-    def purchase_drink(self, kth, fee):
-        drink = self.drink_list[kth]
-        print(f'{fee}円が投入されました')
-        if fee < drink.price:
+    def purchase_drink(self, num, money):
+        '''購入判定'''
+        drink = self.drink_list[num]
+        print(f'{money}円が投入されました')
+        if money < drink.price:
             print('購入金額が足りません')
             return
-        change = fee - drink.price
+        change = money - drink.price
         if change > 0:
             print(f'{change}円のお釣りになります')
         drink.stock -= 1
