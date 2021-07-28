@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flask | result</title>
+</head>
+<body>
+  <h1>結果</h1>
+  <p>{{ fruit }}が当たりました。</p>
+
+  <!-- url_for 関数は Flask の関数 -->
+  <!-- 引数に関数名を入れると、route メソッドで指定されたアドレスが戻り値になる -->
+  <!-- url_for('output') と指定すると output 関数を呼び出すアドレスが出力される -->
+  <!-- url_forの第二引数のno=noはoutput関数にnoを渡すため。右側のnoは関数resultよりもらったもの。そのためresultでno=noを渡している -->
+  <form method="GET" action="{{ url_for('output', no=no) }}">
+    <p>名前：<input type="text" name="input"></p>
+    <button type="submit">送信</button>
+  </form>
+  <a href="/">戻る</a>
+</body>
+</html>
