@@ -72,3 +72,10 @@ def knapsack(values, weights, capacity):
 
 knapsack(values, weights, capacity)
 
+'''
+＝表示＝
+
+２６
+
+'''
+
