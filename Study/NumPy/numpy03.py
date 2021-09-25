@@ -1,5 +1,5 @@
 '''
-===NumPy Basics(2)===
+===NumPy Basics(3)===
 
 
 ===ブロードキャスト===
