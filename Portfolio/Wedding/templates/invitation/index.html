@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Kato Wedding{% endblock %}
+{% block content %}
+
+  <!-- header -->
+  <header>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="menu-content">
+      <ul>
+        <li><a href="#">HOME</a></li>
+        <li><a href="#Invitation">INVITATION</a></li>
+        <li><a href="#Events">EVENTS</a></li>
+        <li><a href="#Message">MESSAGE</a></li>
+        <li><a href="#Rsvp">RSVP</a></li>
+      </ul>
+    </div>
+  </header>
+  
+
+  <!-- メイン -->
+  <main>
+    <!-- Top button -->
+    <div class="pagetop">
+      <a href="#"><i class="fas fa-chevron-up"></i></a>
+    </div>
+
+
+    <!-- TOP -->
+    <section class="top-image">
+      <img src="{% static 'invitation/images/photo_wedding.png' %}" alt="トップ画像">
+      <div class="name">
+        Yusuke<br>
+        &<br>
+        Makiko
+      </div>
+    </section>
+
+
+    <!-- INVITATION -->
+    <section id="Invitation">
+      <h1>INVITATION</h1>
+      <p>
+        謹啓　春分の候<br>
+        <br>
+        皆さまにおかれましては<br>
+        ますますご清祥のこととお慶び申し上げます。<br>
+        <br>
+        このたび、私たちは結婚式を挙げることになりました。<br>
+        <br>
+        大切な皆さまには<br>
+        私たちの門出を見守っていただきたく<br>
+        心ばかりの小宴ではございますが<br>
+        ぜひご出席くださいますよう<br>
+        ご案内申し上げます。<br>
+        <br>
+        出席については4月15日までに<br>
+        当サイトのRSVPより回答いただければ幸いです。<br>
+        謹白
+      </p>
+    </section>
+
+
+    <!-- EVENTS -->
+    <section id="Events">
+      <h1>EVENTS</h1>
+      <h3>Wedding Ceremony</h3>
+      <h4>2022/05/14</h4>
+      <table class="access-tab">
+        <tr>
+          <td>受　付</td>
+          <td>PM 0:30</td>
+        </tr>
+        <tr>
+          <td>挙　式</td>
+          <td>PM 1:00</td>
+        </tr>
+        <tr>
+          <td>披露宴</td>
+          <td>PM 1:30</td>
+        </tr>
+      </table>
+      
+      <h3>Venue Access</h3>
+      <h2>三井ゲストハウス</h2>
+      <div class="gmap">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3336.9132706387395!2d131.760548315194!3d33.24257548083383!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x354428773b3b53ed%3A0xea275cd5a694e967!2z5LiJ5LqV44Ky44K544OI44OP44Km44K5!5e0!3m2!1sja!2sjp!4v1631350863848!5m2!1sja!2sjp" width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+      <p>〒870-0301 大分県大分市日吉原<br>
+        TEL:097-510-7331</p>
+    </section>
+
+
+    <!-- MESSAGE -->
+    <section id="Message">
+      <h1>MESSAGE</h1>
+      <h2>大切なゲストの皆様へ</h2>
+      <p>
+        このたびは、新型コロナウイルスへのご不安がある中<br>
+        招待状をお受け取りいただきありがとうございます。<br>
+        <br>
+        会場の三井ゲストハウスでは<br>
+        皆さまに安心してお楽しみいただくため<br>
+        感染拡大防止対策を実施しています。<br>
+        <br>
+        皆さまのご健康と安全が第一でございますので<br>
+        ご出席につきましては<br>
+        ご無理のないようご検討いただければ幸いです。<br>
+        <br>
+        ご不明点やご質問等ございましたら<br>
+        お気軽に仰ってください。
+      </p>
+    </section>
+
+
+    <!-- RSVP -->
+    <section id="Rsvp">
+      <h1>RSVP</h1>
+      <form action="{% url 'invitation' %}" method="post">
+        {% csrf_token %}
+        <div>
+          <p>ゲスト様</p>
+          <div>
+            <img src="{% static 'invitation/images/wedding_guest.jpg' %}" alt="新郎新婦" width="250" height="250">
+          </div>
+          <input type="radio" name="guest" value="新郎側" id="groom" checked="checked">
+          <label for="groom">新郎側</label>
+          <input type="radio" name="guest" value="新婦側" id="bride">
+          <label for="bride">新婦側</label>
+        </div>
+        <div>
+          <p>名前　<span>必須</span></p>
+          {{ form.name }}
+        </div>
+        <div>
+          <p>ふりがな　<span>必須</span></p>
+          {{ form.furi }}
+        </div>
+        <div>
+          <p>電話番号　<span>必須</span></p>
+          {{ form.tel }}
+        </div>
+        <div>
+          <p>メールアドレス　<span>必須</span></p>
+          {{ form.mail }}
+        </div>
+        <div>
+          <p>郵便番号　<span>必須</span></p>
+          {{ form.post }}
+        </div>
+        <div>
+          <p>住所　<span>必須</span></p>
+          {{ form.address }}
+        </div>
+        <div>
+          <p>送迎バス　<span>必須</span></p>
+          <input type="radio" name="bus" value="利用する" id="yes" checked="checked">
+          <label for="yes">利用する</label>
+          <input type="radio" name="bus" value="利用しない" id="no">
+          <label for="no">利用しない</label>
+        </div>
+        <div>
+          <p>メッセージ</p>
+          {{ form.message }}
+        </div>
+        <div>
+          <p>アレルギー</p>
+          {{ form.allergy }}
+        </div>
+        <div>
+          <p>お連れ様</p>
+          <p>{{ form.conpanion1 }}</p>
+          <p>{{ form.conpanion2 }}</p>
+          <p>{{ form.conpanion3 }}</p>
+        </div>
+        <div>
+          <p>出欠　<span>必須</span></p>
+          <input type="radio" name="attendance" value="ご出席" id="attendance" checked="checked">
+          <label for="attendance">ご出席</label>
+          <input type="radio" name="attendance" value="ご欠席" id="absence">
+          <label for="absence">ご欠席</label>
+        </div>
+        <input type="submit" value="送 信">
+      </form>
+    </section>
+  </main>
+
+
+  <!-- footer -->
+  <footer>
+    <p>&copy;2021 Kato Yusuke.</p>
+  </footer>
+
+{% endblock %}
