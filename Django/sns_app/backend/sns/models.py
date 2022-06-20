@@ -32,9 +32,9 @@ class Posts(models.Model):
 def media_path(user, post, filename):
     return f'{user.name}/{post.id}/{filename}'
 
-class Phots(models.Model):
+class Photos(models.Model):
     class Meta:
-        db_table = 'phots'
+        db_table = 'photos'
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     image = models.FileField(upload_to=media_path)
