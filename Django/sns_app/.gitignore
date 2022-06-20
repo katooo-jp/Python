@@ -1,7 +1,32 @@
 /venv
-memo.txt
+.vscode
+.DS_Store
+
+
+
+# ----------backend----------
 __pycache__
 db.sqlite3
-.DS_Store
 .env
-.vscode
+
+# ----------frontend-----------
+# dependencies
+*node_modules/
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
